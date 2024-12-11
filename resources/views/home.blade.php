@@ -4,18 +4,31 @@
 @endsection
 @section('content')
     <!-- ========== section start ========== -->
+    @if(Auth::user()->code== 'A')
     <section class="section">
         <div class="container-fluid">
             <!-- ========== title-wrapper start ========== -->
             <div class="title-wrapper pt-30">
                 <div class="row align-items-center">
-                    {{-- <div class="col-md-6">
-                        <div class="title mb-30">
-                            <h2>Penjualan</h2>
-                        </div>
-                    </div> --}}
-                    <!-- end col -->
-
+                </div>
+                <!-- end row -->
+            </div>
+            {{-- <h1 style="text-align: center; color: #f49d2c;">Selamat Datang Di Toko Luluk</h1> --}}
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="card-style calendar-card mb-30">
+                        <div id="calendar-mini"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @else
+    <section class="section">
+        <div class="container-fluid">
+            <!-- ========== title-wrapper start ========== -->
+            <div class="title-wrapper pt-30">
+                <div class="row align-items-center">
                 </div>
                 <!-- end row -->
             </div>
@@ -90,6 +103,8 @@
             <!-- End Row -->
         </div>
     </section>
+    @endif
+    
     <!-- ========== section end ========== -->
 @endsection
 @push('js')
