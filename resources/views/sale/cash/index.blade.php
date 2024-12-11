@@ -1,6 +1,8 @@
 @extends('sale.index')
 @section('name')
+@section('name')
     CASH
+@endsection
 @endsection
 @section('create-link')
     <a href="{{ route('sales.cash.create') }}" class="btn btn-primary">Tambah</a>

@@ -18,6 +18,7 @@
                     <span class="text">Dashboard</span>
                 </a>
             </li>
+            @if(Auth::user()->code== 'A')
             <li @class([
                 'nav-item nav-item-has-children',
                 'active' => Route::is('purchases.*'),
@@ -59,9 +60,9 @@
                     <li>
                         <a @class(['active' => Route::is('sales.receivable.*')]) href="{{ route('sales.receivable.index') }}">Piutang </a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a @class(['active' => Route::is('sales.transfer.*')]) href="{{ route('sales.transfer.index') }}">Transfer </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </li>
 
@@ -74,7 +75,7 @@
                     <span class="icon">
                         <i class="lni lni-money-location"></i>
                     </span>
-                    <span class="text">Pembayaran Piutang</span>
+                    <span class="text">Pembayaran Piutang Cash</span>
                 </a>
                 <ul id="menu_piutang" @class([
                     'collapse dropdown-nav',
@@ -83,39 +84,12 @@
                     <li>
                         <a @class(['active' => Route::is('receivable-payments.cash.*')]) href="{{ route('receivable-payments.cash.index') }}">Cash </a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a @class(['active' => Route::is('receivable-payments.transfer.*')])
                             href="{{ route('receivable-payments.transfer.index') }}">Transfer </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </li>
-
-            <li @class([
-                'nav-item nav-item-has-children',
-                'active' => Route::is('debt-payments.*'),
-            ])>
-                <a href="#0" class="collapsed" data-bs-toggle="collapse" data-bs-target="#menu_hutang"
-                    aria-controls="menu_hutang" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="icon">
-                        <i class="lni lni-money-location"></i>
-                    </span>
-                    <span class="text">Pembayaran Hutang</span>
-                </a>
-                <ul id="menu_hutang" @class([
-                    'collapse dropdown-nav',
-                    'show' => Route::is('debt-payments.*'),
-                ])>
-                    <li>
-                        <a @class(['active' => Route::is('debt-payments.cash.*')]) href="{{ route('debt-payments.cash.index') }}">Cash </a>
-                    </li>
-                    <li>
-                        <a @class(['active' => Route::is('debt-payments.transfer.*')]) href="{{ route('debt-payments.transfer.index') }}">Transfer
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-            {{-- Laporan --}}
 
             <li @class([
                 'nav-item nav-item-has-children',
@@ -155,8 +129,6 @@
                     </li>
                 </ul>
             </li>
-
-            {{-- Management --}}
             <li @class([
                 'nav-item nav-item-has-children',
                 'active' => Route::is('users.*'),
@@ -190,7 +162,86 @@
                     </li>
                 </ul>
             </li>
+            @else
+            <li @class([
+                'nav-item nav-item-has-children',
+                'active' => Route::is('sales.*'),
+            ])>
+                <a href="#0" class="collapsed" data-bs-toggle="collapse" data-bs-target="#menu_penjualan"
+                    aria-controls="menu_penjualan" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="icon">
+                        <i class="lni lni-cart"></i>
+                    </span>
+                    <span class="text">Penjualan</span>
+                </a>
+                <ul id="menu_penjualan" @class(['collapse dropdown-nav', 'show' => Route::is('sales.*')])>
+                    <li>
+                        <a @class(['active' => Route::is('sales.cash.*')]) href="{{ route('sales.cash.index') }}">Cash </a>
+                    </li>
+                    <li>
+                        <a @class(['active' => Route::is('sales.receivable.*')]) href="{{ route('sales.receivable.index') }}">Piutang </a>
+                    </li>
+                    {{-- <li>
+                        <a @class(['active' => Route::is('sales.transfer.*')]) href="{{ route('sales.transfer.index') }}">Transfer </a>
+                    </li> --}}
+                </ul>
+            </li>
 
+            <li @class([
+                'nav-item nav-item-has-children',
+                'active' => Route::is('receivable-payments.*'),
+            ])>
+                <a href="#0" class="collapsed" data-bs-toggle="collapse" data-bs-target="#menu_piutang"
+                    aria-controls="menu_piutang" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="icon">
+                        <i class="lni lni-money-location"></i>
+                    </span>
+                    <span class="text">Pembayaran Piutang Cash</span>
+                </a>
+                <ul id="menu_piutang" @class([
+                    'collapse dropdown-nav',
+                    'show' => Route::is('receivable-payments.*'),
+                ])>
+                    <li>
+                        <a @class(['active' => Route::is('receivable-payments.cash.*')]) href="{{ route('receivable-payments.cash.index') }}">Cash </a>
+                    </li>
+                    {{-- <li>
+                        <a @class(['active' => Route::is('receivable-payments.transfer.*')])
+                            href="{{ route('receivable-payments.transfer.index') }}">Transfer </a>
+                    </li> --}}
+                </ul>
+            </li>
+
+            <li @class([
+                'nav-item nav-item-has-children',
+                'active' => Route::is('report.*'),
+            ])>
+                <a href="#0" class="collapsed" data-bs-toggle="collapse" data-bs-target="#ddmenu_5"
+                    aria-controls="ddmenu_5" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="icon">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M13.75 4.58325H16.5L15.125 6.41659L13.75 4.58325ZM4.58333 1.83325H17.4167C18.4342 1.83325 19.25 2.65825 19.25 3.66659V18.3333C19.25 19.3508 18.4342 20.1666 17.4167 20.1666H4.58333C3.575 20.1666 2.75 19.3508 2.75 18.3333V3.66659C2.75 2.65825 3.575 1.83325 4.58333 1.83325ZM4.58333 3.66659V7.33325H17.4167V3.66659H4.58333ZM4.58333 18.3333H17.4167V9.16659H4.58333V18.3333ZM6.41667 10.9999H15.5833V12.8333H6.41667V10.9999ZM6.41667 14.6666H15.5833V16.4999H6.41667V14.6666Z" />
+                        </svg>
+                    </span>
+                    <span class="text"> Laporan </span>
+                </a>
+                <ul id="ddmenu_5" @class(['collapse dropdown-nav', 'show' => Route::is('report.*')])>
+                    <li>
+                        <a @class(['active' => Route::is('report.sales')]) href="{{ route('report.sales') }}">
+                            Penjualan
+                        </a>
+                    </li>
+                    {{-- <li>
+                        <a @class(['active' => Route::is('report.receivable-payments')]) href="{{ route('report.receivable-payments') }}">
+                            Pembayaran Piutang
+                        </a>
+                    </li> --}}
+                </ul>
+            </li>
+            @endif
+            
         </ul>
     </nav>
 </aside>

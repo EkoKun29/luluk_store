@@ -35,7 +35,7 @@ Auth::routes();
 
 Route::middleware('auth')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::middleware('role:admin')->group(function () {
+    // Route::middleware('role:admin')->group(function () {
         Route::resource('users', App\Http\Controllers\UserController::class);
         Route::resource('products', App\Http\Controllers\ProductController::class);
         Route::as('products')->apiResource('products/{product}/price', App\Http\Controllers\ProductPriceController::class)->parameters([
@@ -159,5 +159,12 @@ Route::middleware('auth')->group(function () {
 
         Route::get('sales/{sale}/print', [App\Http\Controllers\SaleController::class, 'print'])->name('sale.print');
         Route::get('purchases/{purchase}/print', [App\Http\Controllers\PurchaseController::class, 'print'])->name('purchase.print');
-    });
+
+        Route::resource('cash-deposits', CashDepositController::class);
+        Route::resource('cash-transfer', CashTransferController::class);
+        Route::resource('audits', AuditController::class);
+
+        Route::get('sales/{sale}/print', [App\Http\Controllers\SaleController::class, 'print'])->name('sale.print');
+        Route::get('purchases/{purchase}/print', [App\Http\Controllers\PurchaseController::class, 'print'])->name('purchase.print');
+    // });
 });

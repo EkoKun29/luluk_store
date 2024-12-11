@@ -29,14 +29,15 @@
 </head>
 
 <body>
+    <div class="wrapper">
+    @if(Auth::user()->code== 'A')
     @include('layouts.sidebar')
-
-    <!-- ======== main-wrapper start =========== -->
-    <main class="main-wrapper">
+    <main class="main-wrapper" {{ Auth::user()->code != 'A' ? 'full-layout' : '' }}">
         <!-- ========== header start ========== -->
         <header class="header">
             <div class="container-fluid">
                 <div class="row">
+                    @if(Auth::user()->code== 'A')
                     <div class="col-lg-5 col-md-5 col-6">
                         <div class="header-left d-flex align-items-center">
                             <div class="menu-toggle-btn mr-20">
@@ -46,6 +47,15 @@
                             </div>
                         </div>
                     </div>
+                    @else
+                    <div class="col-lg-5 col-md-5 col-6">
+                        <div class="header-left d-flex align-items-center">
+                            <div class="menu-toggle-btn mr-20">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    @endif
                     <div class="col-lg-7 col-md-7 col-6">
                         <div class="header-right">
                             <!-- profile start -->
@@ -58,7 +68,7 @@
                                                 <h6>{{ auth()->user()->name }}</h6>
                                             @endif
                                             <div class="image">
-                                                <img src="{{ asset('assets/images/profile/profile-image.png') }}"
+                                                <img src="{{ asset('assets/images/profile/profilee.jpeg') }}"
                                                     alt="" />
                                                 <span class="status"></span>
                                             </div>
@@ -85,7 +95,82 @@
 
         @include('layouts.footer')
     </main>
+    @else
+    <main class="main-wrapper-non" {{ Auth::user()->code != 'A' ? 'full-layout' : '' }}">
+        <!-- ========== header start ========== -->
+        <header class="header">
+            <div class="container-fluid">
+                <div class="row">
+                    @if(Auth::user()->code== 'A')
+                    <div class="col-lg-5 col-md-5 col-6">
+                        <div class="header-left d-flex align-items-center">
+                            <div class="menu-toggle-btn mr-20">
+                                <button id="menu-toggle" class="main-btn primary-btn btn-hover">
+                                    <i class="lni lni-chevron-left me-2"></i> Menu
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    @else
+                    <div class="col-lg-5 col-md-5 col-6">
+                        <div class="header-left d-flex align-items-center">
+                            <div class="menu-toggle-btn mr-20">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+                    <div class="col-lg-7 col-md-7 col-6">
+                        <div class="header-right">
+                            <!-- profile start -->
+                            <div class="profile-box ml-15">
+                                <button class="dropdown-toggle bg-transparent border-0" type="button" id="profile"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <div class="profile-info">
+                                        <div class="info">
+                                            @if (auth()->check())
+                                                <h6>{{ auth()->user()->name }}</h6>
+                                            @endif
+                                            <div class="image">
+                                                <img src="{{ asset('assets/images/profile/profile-image.png') }}"
+                                                    alt="" />
+                                                <span class="status"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <i class="lni lni-chevron-down"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profile">
+                                    <li>
+                                        <a type="button" href="{{ route('home') }}"> <i
+                                                class="lni lni-dashboard"></i> Home </a>
+                                    </li>
+                                    <li>
+                                        <a type="button" data-bs-toggle="modal" data-bs-target="#logoutModal"> <i
+                                                class="lni lni-exit"></i> Sign Out </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- profile end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- ========== header end ========== -->
 
+        @yield('content')
+
+        @include('layouts.footer')
+    </main>
+</div>
+    <!-- Modal -->
+
+    @endif
+
+    <!-- ======== main-wrapper start =========== -->
+    
+</div>
     <!-- Modal -->
     <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
         <div class="modal-dialog">

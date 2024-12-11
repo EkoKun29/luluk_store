@@ -9,11 +9,11 @@
             <!-- ========== title-wrapper start ========== -->
             <div class="title-wrapper pt-30">
                 <div class="row align-items-center">
-                    <div class="col-md-6">
+                    {{-- <div class="col-md-6">
                         <div class="title mb-30">
-                            <h2>Toko Luluk Dashboard</h2>
+                            <h2>Penjualan</h2>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- end col -->
 
                 </div>
@@ -22,185 +22,72 @@
             <!-- ========== title-wrapper end ========== -->
             <div class="row">
                 <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="icon-card mb-30">
-                        <div class="icon purple">
-                            <i class="lni lni-cart-full"></i>
+                    <a href="{{ route('sales.cash.index') }}" style="text-decoration: none;">
+                        <div class="icon-card mb-30" style="background-color: #84aaf6; border: 1px solid #5fccff; border-radius: 8px;">
+                            <div class="icon purple" style="color: #ffffff;">
+                                <i class="lni lni-cart-full"></i>
+                            </div>
+                            <div class="content">
+                                <h6 class="mb-10" style="color: #ffffff;">Penjualan</h6>
+                                <h3 class="text-bold mb-10" style="color: #ffffff;">Cash</h3>
+                            </div>
                         </div>
-                        <div class="content">
-                            <h6 class="mb-10">User</h6>
-                            <h3 class="text-bold mb-10">{{ $usersCount }}</h3>
-                        </div>
-                    </div>
-                    <!-- End Icon Cart -->
+                    </a>
                 </div>
-                <!-- End Col -->
+            
                 <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="icon-card mb-30">
-                        <div class="icon success">
-                            <i class="lni lni-dollar"></i>
+                    <a href="{{ route('sales.receivable.index') }}" style="text-decoration: none;">
+                        <div class="icon-card mb-30" style="background-color: #ffffff; border: 1px solid #070e11; border-radius: 8px;">
+                            <div class="icon purple" style="color: #000000;">
+                                <i class="lni lni-package"></i>
+                            </div>
+                            <div class="content">
+                                <h6 class="mb-10">Penjualan</h6>
+                                <h3 class="text-bold mb-10">Piutang</h3>
+                            </div>
                         </div>
-                        <div class="content">
-                            <h6 class="mb-10">Produk</h6>
-                            <h3 class="text-bold mb-10">{{ $productsCount }}</h3>
-                        </div>
-                    </div>
-                    <!-- End Icon Cart -->
+                    </a>
                 </div>
-                <!-- End Col -->
+            
                 <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="icon-card mb-30">
-                        <div class="icon primary">
-                            <i class="lni lni-credit-cards"></i>
+                    <a href="{{ route('receivable-payments.cash.index') }}" style="text-decoration: none;">
+                        <div class="icon-card mb-30" style="background-color: #fc8f8f; border: 1px solid #fb6a93; border-radius: 8px;">
+                            <div class="icon success" style="color: #ffffff;">
+                                <i class="lni lni-dollar"></i>
+                            </div>
+                            <div class="content">
+                                <h6 class="mb-10" style="color: #ffffff;">Pembayaran Piutang</h6>
+                                <h3 class="text-bold mb-10" style="color: #ffffff;">Cash</h3>
+                            </div>
                         </div>
-                        <div class="content">
-                            <h6 class="mb-10">Pembelian</h6>
-                            <h3 class="text-bold mb-10">{{ $purchasesCount }}</h3>
-                        </div>
-                    </div>
-                    <!-- End Icon Cart -->
+                    </a>
                 </div>
-                <!-- End Col -->
+            
                 <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="icon-card mb-30">
-                        <div class="icon orange">
-                            <i class="lni lni-user"></i>
+                    <a href="{{ route('report.sales') }}" style="text-decoration: none;">
+                        <div class="icon-card mb-30" style="background-color: #e5e5e5; border: 1px solid #cccccc; border-radius: 8px;">
+                            <div class="icon success" style="color: #000000;">
+                                <i class="lni lni-layout"></i>
+                            </div>
+                            <div class="content">
+                                <h6 class="mb-10">Laporan</h6>
+                                <h3 class="text-bold mb-10">Penjualan</h3>
+                            </div>
                         </div>
-                        <div class="content">
-                            <h6 class="mb-10">Penjualan</h6>
-                            <h3 class="text-bold mb-10">{{ $salesCount }}</h3>
-                        </div>
-                    </div>
-                    <!-- End Icon Cart -->
+                    </a>
                 </div>
-                <!-- End Col -->
             </div>
-            <!-- End Row -->
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="card-style mb-30">
-                        <div
-                            class="title d-flex flex-wrap justify-content-between align-items-center">
-                            <div class="left">
-                                <h6 class="text-medium mb-30">Riwayat Pembelian</h6>
-                            </div>
-                        </div>
-                        <!-- End Title -->
-                        <div class="table-responsive">
-                            <table class="table top-selling-table">
-                                <thead>
-                                    <tr>
-                                        <th>
-                                            <h6 class="text-sm text-medium">Tanggal</h6>
-                                        </th>
-                                        <th>
-                                            <h6 class="text-sm text-medium">Nota</h6>
-                                        </th>
-                                        <th class="min-width">
-                                            <h6 class="text-sm text-medium">Total</h6>
-                                        </th>
-                                        <th class="min-width">
-                                            <h6 class="text-sm text-medium">Metode</h6>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @forelse ($purchases as $purchase)
-                                        <tr>
-                                            <td>
-                                                <p class="text-sm">{{ $purchase->formatted_date }}</p>
-                                            </td>
-                                            <td>
-                                                <p class="text-sm">{{ $purchase->note_number }}</p>
-                                            </td>
-                                            <td>
-                                                <p class="text-sm">{{ 'Rp ' . number_format($purchase->total, 2, ',', '.') }}</p>
-                                            </td>
-                                            <td>
-                                                <p class="text-sm">{{ $purchase->method->name }}</p>
-                                            </td>
-                                        </tr>
-                                    @empty
-                                        <tr>
-                                            <td colspan="5" class="text-center text-sm">Tidak ada data</td>
-                                        </tr>
-                                    @endforelse
-                                </tbody>
-                            </table>
-                            <!-- End Table -->
-                        </div>
-                    </div>
-                </div>
-                <!-- End Col -->
-                <div class="col-lg-6">
-                    <div class="card-style mb-30">
-                        <div class="title d-flex flex-wrap align-items-center justify-content-between">
-                            <div class="left">
-                                <h6 class="text-medium mb-30">Riwayat Penjualan</h6>
-                            </div>
-                            <div class="right">
-                                <!-- end select -->
-                            </div>
-                        </div>
-                        <!-- End Title -->
-                        <div class="table-responsive">
-                            <table class="table top-selling-table">
-                                <thead>
-                                    <tr>
-                                        <th>
-                                            <h6 class="text-sm text-medium">Tanggal</h6>
-                                        </th>
-                                        <th>
-                                            <h6 class="text-sm text-medium">Nota</h6>
-                                        </th>
-                                        <th class="min-width">
-                                            <h6 class="text-sm text-medium">Total</h6>
-                                        </th>
-                                        <th class="min-width">
-                                            <h6 class="text-sm text-medium">Metode</h6>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @forelse ($sales as $sale)
-                                        <tr>
-                                            <td>
-                                                <p class="text-sm">{{ $sale->formatted_date }}</p>
-                                            </td>
-                                            <td>
-                                                <p class="text-sm">{{ $sale->note_number }}</p>
-                                            </td>
-                                            <td>
-                                                <p class="text-sm">{{ 'Rp ' . number_format($sale->total, 2, ',', '.') }}</p>
-                                            </td>
-                                            <td>
-                                                <p class="text-sm">{{ $sale->method->name }}</p>
-                                            </td>
-                                        </tr>
-                                    @empty
-                                        <tr>
-                                            <td colspan="4" class="text-center text-sm">Tidak ada data</td>
-                                        </tr>
-                                    @endforelse
-                                </tbody>
-                            </table>
-                            <!-- End Table -->
-                        </div>
-                    </div>
-                </div>
-                <!-- End Col -->
-            </div>
-            <!-- End Row -->
-            <div class="row">
+            
+            
+            {{-- <div class="row">
                 <div class="col-lg-5">
                     <div class="card-style calendar-card mb-30">
                         <div id="calendar-mini"></div>
                     </div>
                 </div>
-                <!-- End Col -->
-            </div>
+            </div> --}}
             <!-- End Row -->
         </div>
-        <!-- end container -->
     </section>
     <!-- ========== section end ========== -->
 @endsection
