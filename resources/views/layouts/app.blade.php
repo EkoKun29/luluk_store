@@ -132,7 +132,7 @@
                                                 <h6>{{ auth()->user()->name }}</h6>
                                             @endif
                                             <div class="image">
-                                                <img src="{{ asset('assets/images/profile/profile-image.png') }}"
+                                                <img src="{{ asset('assets/images/profile/profilee.jpeg') }}"
                                                     alt="" />
                                                 <span class="status"></span>
                                             </div>
