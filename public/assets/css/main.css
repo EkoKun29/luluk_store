@@ -867,7 +867,7 @@ h6,
   border-radius: 10px;
   text-align: center;
   height: 200px;
-  width: 300px;
+  /* width: 300px; */
 }
 
 .icon-card.icon-card-3 {
