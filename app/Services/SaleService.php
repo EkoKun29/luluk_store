@@ -9,6 +9,8 @@ use App\Models\ProductPrice;
 use App\Models\Sale;
 use App\Models\SaleDetail;
 use App\Models\Setting;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class SaleService
 {
@@ -79,10 +81,13 @@ class SaleService
         $sale = Sale::query()->create([
             'note_number' => $this->generateNoteNumber(),
             'date' => $this->saleData['date'],
+            // 'date' => $this->saleData['date'] ?? Carbon::now()->toDateString(),
             'consumer' => $this->saleData['consumer'],
             'store_name' => $this->saleData['store_name'],
             'amount_paid' => $this->saleData['amount_paid'],
             'method' => $this->saleData['method'],
+            'id_user' => Auth::user()->id,
+            'nama_user' => Auth::user()->name,
         ]);
 
         $this->saveSaleDetails($sale);

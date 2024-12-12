@@ -1,6 +1,7 @@
 <div class="input-style-1">
     <label>Tanggal</label>
-    <input type="date" placeholder="Tanggal Transaksi" name="date" value="{{ old('date') }}" required>
+    <input type="date" placeholder="Tanggal Transaksi" name="date" 
+    value="{{ old('date', \Carbon\Carbon::now()->toDateString()) }}" required readonly>
 </div>
 <div class="input-style-1">
     <label>Konsumen</label>

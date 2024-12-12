@@ -24,6 +24,8 @@ class Sale extends Model
         'store_name',
         'amount_paid',
         'method',
+        'id_user',
+        'nama_user',
     ];
 
     protected $casts = [
@@ -48,6 +50,9 @@ class Sale extends Model
         return $this->hasMany(SaleDetail::class);
     }
 
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
     /**
      * Get all of the debtPayments for the Purchase
      *

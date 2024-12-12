@@ -35,7 +35,7 @@
             <!-- ========== title-wrapper end ========== -->
             <div class="row">
                 <div class="col-xl-3 col-lg-4 col-sm-6" style="display: flex; flex-direction: column;">
-                    <a href="{{ route('sales.cash.index') }}" style="text-decoration: none;">
+                    <a href="{{ route('sales.cash.create') }}" style="text-decoration: none;">
                         <div class="icon-card mb-30" style="background-color: #84aaf6; border: 1px solid #5fccff; border-radius: 8px;">
                             <div class="icon purple" style="color: #ffffff;">
                                 <i class="lni lni-cart-full"></i>
@@ -49,7 +49,7 @@
                 </div>
             
                 <div class="col-xl-3 col-lg-4 col-sm-6" style="display: flex; flex-direction: column;">
-                    <a href="{{ route('sales.receivable.index') }}" style="text-decoration: none;">
+                    <a href="{{ route('sales.receivable.create') }}" style="text-decoration: none;">
                         <div class="icon-card mb-30" style="background-color: #ffffff; border: 1px solid #070e11; border-radius: 8px;">
                             <div class="icon purple" style="color: #000000;">
                                 <i class="lni lni-package"></i>
@@ -64,7 +64,7 @@
                 
             
                 <div class="col-xl-3 col-lg-4 col-sm-6" style="display: flex; flex-direction: column;">
-                    <a href="{{ route('receivable-payments.cash.index') }}" style="text-decoration: none;">
+                    <a href="{{ route('receivable-payments.cash.create') }}" style="text-decoration: none;">
                         <div class="icon-card mb-30" style="background-color: #fc8f8f; border: 1px solid #fb6a93; border-radius: 8px;">
                             <div class="icon success" style="color: #ffffff;">
                                 <i class="lni lni-dollar"></i>

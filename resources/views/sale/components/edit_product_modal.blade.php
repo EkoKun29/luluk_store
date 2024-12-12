@@ -68,7 +68,7 @@
                                 .toString())
                                 let tableRow = $(`#tblProducts tbody tr#${productPriceId}`);
 
-                                tableRow.find("input.tbl-product-price-id").val(productPriceId)
+                            tableRow.find("input.tbl-product-price-id").val(productPriceId)
                             tableRow.find("input.tbl-amount").val(amount)
                             tableRow.find("td.p-amount").html(amount)
                             tableRow.find("td.p-price").html(formatRupiah(price.toString()))
