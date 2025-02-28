@@ -26,12 +26,14 @@ class Sale extends Model
         'method',
         'id_user',
         'nama_user',
+        'ket_pembayaran'
     ];
 
     protected $casts = [
         'date' => 'datetime',
         'amount_paid' => 'integer',
-        'method' => SaleMethod::class
+        'method' => SaleMethod::class,
+        'ket_pembayaran' => 'string'
     ];
 
     protected $appends = [

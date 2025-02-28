@@ -90,6 +90,20 @@
                         </div>
                     </a>
                 </div>
+
+                <div class="col-xl-3 col-lg-4 col-sm-6" style="display: flex; flex-direction: column;">
+                    <a href="{{ route('report.receivable-payments') }}" style="text-decoration: none;">
+                        <div class="icon-card mb-30" style="background-color: #a1f5b6; border: 1px solid #cccccc; border-radius: 8px;">
+                            <div class="icon success" style="color: #000000;">
+                                <i class="lni lni-layout"></i>
+                            </div>
+                            <div class="content">
+                                <h6 class="mb-10">Laporan Pembayaran Piutang</h6>
+                                <h3 class="text-bold mb-10">CASH</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
             
             

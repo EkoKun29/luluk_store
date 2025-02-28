@@ -32,6 +32,9 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'create'])->name('_register');
+Route::post('/input-register', [App\Http\Controllers\Auth\RegisterController::class, 'store'])->name('_postRegister');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

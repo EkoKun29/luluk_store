@@ -68,8 +68,17 @@
         }
     </style>
     <script>
-        window.print();
+        document.addEventListener("DOMContentLoaded", function() {
+            window.print();
+    
+            window.onafterprint = function() {
+                let redirectUrl = "{{ $redirectTo }}";
+                console.log("Redirecting to: " + redirectUrl);
+                window.location.href = redirectUrl; 
+            };
+        });
     </script>
+    
 </head>
 
 <body>

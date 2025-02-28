@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -29,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -62,12 +63,18 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+    public function create(){
+        return view('auth.register');
+    }
+
+    public function store(Request $request){
+        $register = new User();
+        $register->code = $request->role;
+        $register->name = $request->nama;
+        $register->email = $request->email;
+        $register->password = Hash::make($request->password);
+        $register->save();
+        return redirect()->route('login')->with('success', 'Akun Anda Berhasil Dibuat');
+
     }
 }

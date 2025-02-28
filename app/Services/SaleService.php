@@ -36,16 +36,21 @@ class SaleService
 
         $sale_method_code = $this->getSaleMethodCode($this->saleData['method']);
 
-        $newSaleNumber = $this->getLastSaleNumber();
+        $newSaleNumber = $this->getLastSaleNumber($sale_method_code);
 
         return $sale_method_code . $userCode . '-' . $newSaleNumber;
     }
 
-    public function getLastSaleNumber(): int
-    {
-        $lastSale = Sale::query()->latest()->first();
-        return is_null($lastSale) ? 1 : (int)(explode('-', $lastSale->note_number)[1]) + 1;
-    }
+    public function getLastSaleNumber(string $saleMethodCode): int
+{
+    $lastSale = Sale::query()
+        ->where('note_number', 'like', $saleMethodCode . '%') // Cari berdasarkan metode penjualan
+        ->latest()
+        ->first();
+
+    return is_null($lastSale) ? 1 : (int)explode('-', $lastSale->note_number)[1] + 1;
+}
+
 
     public function getSaleMethodCode(int $saleMethod): string
     {
@@ -78,6 +83,12 @@ class SaleService
     public function saveSale(): Sale
     {
         $this->validateProductAmount();
+        $paymentDescriptions = [
+            0 => 'CASH',
+            1 => 'PIUTANG',
+            2 => 'TRANSFER'
+        ];
+
         $sale = Sale::query()->create([
             'note_number' => $this->generateNoteNumber(),
             'date' => $this->saleData['date'],
@@ -88,6 +99,7 @@ class SaleService
             'method' => $this->saleData['method'],
             'id_user' => Auth::user()->id,
             'nama_user' => Auth::user()->name,
+            'ket_pembayaran' => $paymentDescriptions[$this->saleData['method']] ?? 'TIDAK DIKETAHUI', 
         ]);
 
         $this->saveSaleDetails($sale);

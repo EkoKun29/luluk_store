@@ -15,6 +15,8 @@ use App\Services\SaleService;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 
 class SaleController extends Controller
 {
@@ -75,17 +77,24 @@ class SaleController extends Controller
 
             $route = '';
             if ($sale->method->value == 0) {
-                $route = 'sales.cash.index';
+                $route = 'sales.cash.create';
             } elseif ($sale->method->value == 1) {
-                $route = 'sales.receivable.index';
+                $route = 'sales.receivable.create';
                 $saleService->saveReceivable($sale);
             } elseif ($sale->method->value == 2) {
-                $route = 'sales.transfer.index';
+                $route = 'sales.transfer.create';
                 $saleService->saveTransfer($sale);
             }
 
             DB::commit();
-            return to_route($route)->with('success-sale', route('sale.print', $sale->id));
+            // return to_route($route)->with('success-sale', route('sale.print', $sale->id));
+            return to_route('sale.print', [
+                'sale' => $sale->id,
+                'redirect_to' => URL::to(route($route)) // Konversi ke URL absolut
+            ]);
+            
+
+
         } catch (\Exception $e) {
             DB::rollBack();
             return back()->withErrors(['error' => $e->getMessage()])->withInput();
@@ -154,13 +163,15 @@ class SaleController extends Controller
         }
     }
 
-    public function print(Sale $sale)
+    public function print(Sale $sale, Request $request)
     {
         return view('sale.print')->with([
-            'sale' => $sale->load('saleDetails.productPrice.product')
+            'sale' => $sale->load('saleDetails.productPrice.product'),
+            'redirectTo' => $request->query('redirect_to') // Ambil nilai asli dari request
         ]);
     }
 
+    
     public function reportIndex()
     {
         $saleDetails = SaleDetail::query()

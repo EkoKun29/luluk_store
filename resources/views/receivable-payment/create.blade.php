@@ -57,11 +57,11 @@
                                 <label>Nota Penjualan</label>
                                 <div class="select-position">
                                     <select id="sale_id" name="sale_id" required>
-                                        <option value="" selected hidden>Pilih Nota Penjualan</option>
+                                        <option value="" selected hidden>Pilih Nota Penjualan Piutang</option>
                                         @foreach ($sales as $sale)
                                             <option value="{{ $sale->id }}"
                                                 {{ old('sale_id') == $sale->id ? 'selected' : '' }}>
-                                                {{ $sale->note_number. ' - ' . $sale->consumer . ' - ' . $sale->formatted_date }}
+                                                {{ $sale->note_number. ' - ' . $sale->consumer . ' - ' . $sale->date }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -135,17 +135,23 @@
                 $('#paidOffTotal').text(formatRupiah((sale.receivable_paid_off + sale.amount_paid).toString()));
                 $('#total').text(formatRupiah(sale.total.toString()));
                 $('#insufficientTotal').text(formatRupiah((sale.total - (sale.receivable_paid_off + sale.amount_paid)).toString()));
+                console.log(sale.sale_details); // Debugging
                 for (let sale_detail of sale.sale_details) {
-                    $('#tblProducts tbody').append(
-                        `<tr>
-                            <td>${sale_detail.product_price.name}</td>
-                            <td>${sale_detail.amount}</td>
-                            <td>${formatRupiah(sale_detail.product_price.price.toString())}</td>
-                            <td>${sale_detail.product_price.product.unit}</td>
-                            <td>${formatRupiah((sale_detail.product_price.price * sale_detail.amount).toString())}</td>
-                        </tr>`
-                    );
+                    if (sale_detail.product_price && sale_detail.product_price.product) {
+                        $('#tblProducts tbody').append(
+                            `<tr>
+                                <td>${sale_detail.product_price.product.name}</td>
+                                <td>${sale_detail.amount}</td>
+                                <td>${formatRupiah(sale_detail.product_price.price.toString())}</td>
+                                <td>${sale_detail.product_price.product.unit}</td>
+                                <td>${formatRupiah((sale_detail.product_price.price * sale_detail.amount).toString())}</td>
+                            </tr>`
+                        );
+                    } else {
+                        console.log("Data product_price atau product tidak ditemukan untuk sale_detail:", sale_detail);
+                    }
                 }
+
             }
         }
 

@@ -26,14 +26,14 @@ class ReceivablePaymentController extends Controller
 
     public function cashCreate()
     {
-        $sales = Sale::query()
-            ->with(['receivableSale', 'saleDetails.productPrice.product'])
-            ->where('method', SaleMethod::PIUTANG)
-            ->get()
-            ->filter(fn (Sale $sale) => ($sale->amount_paid + $sale->receivable_paid_off) < $sale->total)
-            ->values();
+    
+        $sales = Sale::with('saleDetails.productPrice.product')
+            ->whereRaw("LOWER(ket_pembayaran) = 'piutang'")
+            ->get();
+
         return view('receivable-payment.cash.create', compact('sales'));
     }
+
 
     public function transferIndex()
     {
@@ -45,7 +45,7 @@ class ReceivablePaymentController extends Controller
     {
         $sales = Sale::query()
             ->with(['receivableSale', 'saleDetails.productPrice.product'])
-            ->where('method', SaleMethod::PIUTANG)
+            ->where('ket_pembayaran', 'PIUTANG')
             ->get()
             ->filter(fn (Sale $sale) => ($sale->amount_paid + $sale->receivable_paid_off) < $sale->total)
             ->values();
@@ -60,7 +60,7 @@ class ReceivablePaymentController extends Controller
     {
         $sales = Sale::query()
             ->with(['receivableSale', 'saleDetails.productPrice.product'])
-            ->where('method', SaleMethod::PIUTANG)
+            ->where('ket_pembayaran', 'PIUTANG')
             ->get()
             ->filter(fn (Sale $sale) => ($sale->amount_paid + $sale->receivable_paid_off) < $sale->total)
             ->values();

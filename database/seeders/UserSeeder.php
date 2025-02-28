@@ -20,36 +20,24 @@ class UserSeeder extends Seeder
         ]);
 
         Role::create([
-            'name' => 'tokowinong'
+            'name' => 'user'
         ]);
 
-        Role::create([
-            'name' => 'tokogabus'
-        ]);
 
         $admin = User::query()->create([
             'name' => 'admin',
             'code' => 'A',
-            'email' => 'admin@gmail.com',
-            'password' => Hash::make('12345678')
+            'email' => 'adminwinong@gmail.com',
+            'password' => Hash::make('123456')
         ]);
 
         $admin->assignRole('admin');
 
         $user = User::query()->create([
-            'name' => 'tokowinong',
-            'code' => 'W',
-            'email' => 'tokowinong@gmail.com',
-            'password' => Hash::make('winong123')
-        ]);
-
-        $user->assignRole('user');
-
-        $user = User::query()->create([
-            'name' => 'tokogabus',
-            'code' => 'G',
-            'email' => 'tokogabus@gmail.com',
-            'password' => Hash::make('gabus456')
+            'name' => 'User',
+            'code' => 'U',
+            'email' => 'user@gmail.com',
+            'password' => Hash::make('123456')
         ]);
 
         $user->assignRole('user');

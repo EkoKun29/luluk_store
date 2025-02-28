@@ -62,28 +62,28 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        <h6>Barang</h6>
+                                        <h6 style="text-align: center;">Barang</h6>
                                     </th>
                                     <th>
-                                        <h6>Jumlah</h6>
+                                        <h6 style="text-align: center;">Jumlah</h6>
                                     </th>
                                     <th>
-                                        <h6>Harga</h6>
+                                        <h6 style="text-align: center;">Harga</h6>
                                     </th>
                                     <th>
-                                        <h6>Total</h6>
+                                        <h6 style="text-align: center;">Total</h6>
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($sale->saleDetails as $index => $sale_detail)
+                                @foreach ($sale->saleDetails as $sale_detail)
                                     <tr id="{{ $sale_detail['product_id'] }}">
                                         <td class="p-name">{{ $sale_detail->productPrice->product->name }}</td>
-                                        <td class="p-amount">{{ $sale_detail->amount }}</td>
-                                        <td class="p-price">
-                                            {{ 'Rp ' . number_format($sale_detail->price, 2, ',', '.') }}</td>
-                                        <td class="p-total">
-                                            {{ 'Rp ' . number_format($sale_detail->amount * $sale_detail->price, 2, ',', '.') }}
+                                        <td class="p-amount" style="text-align: center;">{{ $sale_detail->amount }}</td>
+                                        <td class="p-price" style="text-align: center;">
+                                            {{ 'Rp ' . number_format($sale_detail->productPrice->price, 2, ',', '.') }}</td>
+                                        <td class="p-total" style="text-align: center;">
+                                            {{ 'Rp ' . number_format($sale_detail->amount * $sale_detail->productPrice->price, 2, ',', '.') }}
                                         </td>
                                     </tr>
                                 @endforeach

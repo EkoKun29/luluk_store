@@ -9,6 +9,7 @@ use App\Models\Sale;
 use App\Models\SaleDetail;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class HomeController extends Controller
 {
@@ -21,7 +22,16 @@ class HomeController extends Controller
     {
         $purchases = Purchase::query()->latest()->get()->take(5);
         $sales = Sale::query()->latest()->get()->take(5);
-        $usersCount = User::role('user')->count();
+        $usersCount = 0;
+
+    // Cek role 'tokowinong' dan 'tokogabus'
+    if (Role::where('name', 'tokowinong')->exists()) {
+        $usersCount += User::role('tokowinong')->count();
+    }
+
+    if (Role::where('name', 'tokogabus')->exists()) {
+        $usersCount += User::role('tokogabus')->count();
+    }
         $productsCount = Product::count();
         $salesCount = Sale::count();
         $purchasesCount = Purchase::count();

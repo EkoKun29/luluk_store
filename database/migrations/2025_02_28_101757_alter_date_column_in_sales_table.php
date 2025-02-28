@@ -12,9 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('sales', function (Blueprint $table) {
-            $table->string('id_user')->nullable();
-            $table->string('nama_user')->nullable();
-            $table->string('ket_pembayaran')->nullable();
+            $table->date('date')->change();
         });
     }
 
@@ -24,9 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('sales', function (Blueprint $table) {
-            $table->dropColumn('id_user');
-            $table->dropColumn('nama_user');
-            $table->dropColumn('ket_pembayaran');
+            $table->dateTime('date')->change();
         });
     }
 };

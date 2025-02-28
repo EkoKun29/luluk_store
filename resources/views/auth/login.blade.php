@@ -48,7 +48,7 @@
                                         <div class="input-style-1">
                                             <label>Email</label>
                                             <input class="@error('email') is-invalid @enderror" type="email" placeholder="Email" name="email"
-                                                value="admin@mail.com" required>
+                                                required>
                                             @error('email')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -61,7 +61,7 @@
                                         <div class="input-style-1">
                                             <label>Password</label>
                                             <input type="password" placeholder="Password" name="password"
-                                                value="12345678" required>
+                                                required>
                                             @error('password')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -73,20 +73,8 @@
 
                                     <div class="col-12">
                                         <div
-                                            class="
-                            button-group
-                            d-flex
-                            justify-content-center
-                            flex-wrap
-                          ">
-                                            <button
-                                                class="
-                              main-btn
-                              primary-btn
-                              btn-hover
-                              w-100
-                              text-center
-                            ">
+                                            class="button-group d-flex justify-content-center flex-wrap ">
+                                            <button class=" main-btn primary-btn btn-hover w-100 text-center ">
                                                 Sign In
                                             </button>
                                         </div>
@@ -94,7 +82,14 @@
                                 </div>
                                 <!-- end row -->
                             </form>
-
+                            <div class="text-center">
+                                <div class="p-6 px-1 pt-0 text-center bg-transparent border-t-0 border-t-solid rounded-b-2xl lg:px-2">
+                                  <p class="mx-auto mb-6 leading-normal text-sm">
+                                    Belum memiliki akun?
+                                    <a href="{{ route('_register') }}" class="relative z-10 font-semibold text-transparent bg-gradient-to-tl from-blue-600 to-cyan-400 bg-clip-text">Daftar Sekarang</a>
+                                  </p>
+                                </div>
+                              </div>
                         </div>
                     </div>
                     <!-- end col -->
