@@ -4810,3 +4810,92 @@ h6,
 .fw-900 {
   font-weight: 900;
 }
+
+.menu-box {
+    width: 350px;
+    height: 170px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #dcdcdc;
+    padding: 15px;
+    position: relative;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.menu-header {
+    text-align: center;
+    padding-bottom: -5px; /* agar tidak menempel tombol panah */
+}
+
+
+.menu-header .icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.menu-header .title {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.menu-header .subtitle {
+    font-size: 13px;
+    color: #666;
+}
+
+/* Tombol panah dalam kotak */
+.arrow-button-box {
+    /* position: absolute;
+    bottom: 10px;
+    right: 10px; */
+    width:300px;
+    padding: 6px 12px;
+    height: 36px;
+    border: 2px solid #28a745;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    text-decoration: none;
+    gap: 6px;
+    margin: 10px auto 0 auto; 
+}
+
+.arrow-button-box i {
+    color: #28a745;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+
+
+/* Warna sesuai kategori */
+.arrow-button-box.green {
+    border-color: #28c76f;
+    color: #28c76f;
+}
+
+.arrow-button-box.blue {
+    border-color: #6c757d;
+    color: #6c757d;
+}
+
+.arrow-button-box.yellow {
+    border-color: #ff9f43;
+    color: #ff9f43;
+}
+
+
+/* Card border warna kategori (strip kiri) */
+.menu-box.blue {
+    border-left: 4px solid #5a8dee;
+}
+
+.menu-box.green {
+    border-left: 4px solid #28c76f;
+}
+
+.menu-box.yellow {
+    border-left: 4px solid #ff9f43;
+}

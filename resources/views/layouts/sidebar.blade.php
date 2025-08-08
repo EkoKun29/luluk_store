@@ -233,11 +233,6 @@
                             Penjualan
                         </a>
                     </li>
-                    {{-- <li>
-                        <a @class(['active' => Route::is('report.receivable-payments')]) href="{{ route('report.receivable-payments') }}">
-                            Pembayaran Piutang
-                        </a>
-                    </li> --}}
                 </ul>
             </li>
             @endif
@@ -246,4 +241,3 @@
     </nav>
 </aside>
 <div class="overlay"></div>
-<!-- ======== sidebar-nav end =========== -->

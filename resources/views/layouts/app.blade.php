@@ -33,7 +33,6 @@
     @if(Auth::user()->code== 'A')
     @include('layouts.sidebar')
     <main class="main-wrapper" {{ Auth::user()->code != 'A' ? 'full-layout' : '' }}">
-        <!-- ========== header start ========== -->
         <header class="header">
             <div class="container-fluid">
                 <div class="row">
@@ -51,14 +50,12 @@
                     <div class="col-lg-5 col-md-5 col-6">
                         <div class="header-left d-flex align-items-center">
                             <div class="menu-toggle-btn mr-20">
-                                
                             </div>
                         </div>
                     </div>
                     @endif
                     <div class="col-lg-7 col-md-7 col-6">
                         <div class="header-right">
-                            <!-- profile start -->
                             <div class="profile-box ml-15">
                                 <button class="dropdown-toggle bg-transparent border-0" type="button" id="profile"
                                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -83,21 +80,16 @@
                                     </li>
                                 </ul>
                             </div>
-                            <!-- profile end -->
                         </div>
                     </div>
                 </div>
             </div>
         </header>
-        <!-- ========== header end ========== -->
-
         @yield('content')
-
         @include('layouts.footer')
     </main>
     @else
     <main class="main-wrapper-non" {{ Auth::user()->code != 'A' ? 'full-layout' : '' }}">
-        <!-- ========== header start ========== -->
         <header class="header">
             <div class="container-fluid">
                 <div class="row">
@@ -122,7 +114,6 @@
                     @endif
                     <div class="col-lg-7 col-md-7 col-6">
                         <div class="header-right">
-                            <!-- profile start -->
                             <div class="profile-box ml-15">
                                 <button class="dropdown-toggle bg-transparent border-0" type="button" id="profile"
                                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -151,25 +142,17 @@
                                     </li>
                                 </ul>
                             </div>
-                            <!-- profile end -->
                         </div>
                     </div>
                 </div>
             </div>
         </header>
-        <!-- ========== header end ========== -->
-
         @yield('content')
 
         @include('layouts.footer')
     </main>
 </div>
-    <!-- Modal -->
-
     @endif
-
-    <!-- ======== main-wrapper start =========== -->
-    
 </div>
     <!-- Modal -->
     <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
@@ -192,9 +175,6 @@
             </div>
         </div>
     </div>
-    <!-- ======== main-wrapper end =========== -->
-
-    <!-- ========= All Javascript files linkup ======== -->
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/Chart.min.js') }}"></script>
     <script src="{{ asset('assets/js/dynamic-pie-chart.js') }}"></script>

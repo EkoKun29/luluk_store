@@ -24,99 +24,61 @@
         </div>
     </section>
     @else
-    <section class="section">
-        <div class="container-fluid">
-            <!-- ========== title-wrapper start ========== -->
-            <div class="title-wrapper pt-30">
-                <div class="row align-items-center">
-                </div>
-                <!-- end row -->
-            </div>
-            <!-- ========== title-wrapper end ========== -->
-            <div class="row">
-                <div class="col-xl-3 col-lg-4 col-sm-6" style="display: flex; flex-direction: column;">
-                    <a href="{{ route('sales.cash.create') }}" style="text-decoration: none;">
-                        <div class="icon-card mb-30" style="background-color: #84aaf6; border: 1px solid #5fccff; border-radius: 8px;">
-                            <div class="icon purple" style="color: #ffffff;">
-                                <i class="lni lni-cart-full"></i>
-                            </div>
-                            <div class="content">
-                                <h6 class="mb-10" style="color: #ffffff;">Penjualan</h6>
-                                <h3 class="text-bold mb-10" style="color: #ffffff;">Cash</h3>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            
-                <div class="col-xl-3 col-lg-4 col-sm-6" style="display: flex; flex-direction: column;">
-                    <a href="{{ route('sales.receivable.create') }}" style="text-decoration: none;">
-                        <div class="icon-card mb-30" style="background-color: #ffffff; border: 1px solid #070e11; border-radius: 8px;">
-                            <div class="icon purple" style="color: #000000;">
-                                <i class="lni lni-package"></i>
-                            </div>
-                            <div class="content">
-                                <h6 class="mb-10">Penjualan</h6>
-                                <h3 class="text-bold mb-10">Piutang</h3>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                
-            
-                <div class="col-xl-3 col-lg-4 col-sm-6" style="display: flex; flex-direction: column;">
-                    <a href="{{ route('receivable-payments.cash.create') }}" style="text-decoration: none;">
-                        <div class="icon-card mb-30" style="background-color: #fc8f8f; border: 1px solid #fb6a93; border-radius: 8px;">
-                            <div class="icon success" style="color: #ffffff;">
-                                <i class="lni lni-dollar"></i>
-                            </div>
-                            <div class="content">
-                                <h6 class="mb-10" style="color: #ffffff;">Pembayaran Piutang</h6>
-                                <h3 class="text-bold mb-10" style="color: #ffffff;">Cash</h3>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            
-                <div class="col-xl-3 col-lg-4 col-sm-6" style="display: flex; flex-direction: column;">
-                    <a href="{{ route('report.sales') }}" style="text-decoration: none;">
-                        <div class="icon-card mb-30" style="background-color: #e5e5e5; border: 1px solid #cccccc; border-radius: 8px;">
-                            <div class="icon success" style="color: #000000;">
-                                <i class="lni lni-layout"></i>
-                            </div>
-                            <div class="content">
-                                <h6 class="mb-10">Laporan</h6>
-                                <h3 class="text-bold mb-10">Penjualan</h3>
-                            </div>
-                        </div>
-                    </a>
-                </div>
 
-                <div class="col-xl-3 col-lg-4 col-sm-6" style="display: flex; flex-direction: column;">
-                    <a href="{{ route('report.receivable-payments') }}" style="text-decoration: none;">
-                        <div class="icon-card mb-30" style="background-color: #a1f5b6; border: 1px solid #cccccc; border-radius: 8px;">
-                            <div class="icon success" style="color: #000000;">
-                                <i class="lni lni-layout"></i>
-                            </div>
-                            <div class="content">
-                                <h6 class="mb-10">Laporan Pembayaran Piutang</h6>
-                                <h3 class="text-bold mb-10">CASH</h3>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+    <section class="section" style="padding: 20px; position: relative;">
+
+    <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+        <!-- POS KASIR -->
+        <div class="menu-box green" style="display: flex; flex-direction: column;">
+            <div class="menu-header">
+                <div class="icon">💵</div>
+                <div class="title">PENJUALAN</div>
+                <div class="subtitle">Cash</div>
             </div>
-            
-            
-            {{-- <div class="row">
-                <div class="col-lg-5">
-                    <div class="card-style calendar-card mb-30">
-                        <div id="calendar-mini"></div>
-                    </div>
-                </div>
-            </div> --}}
-            <!-- End Row -->
+            <a href="{{ route('sales.cash.create') }}" class="arrow-button-box green">➤</a>
         </div>
-    </section>
+
+        <!-- Piutang -->
+        <div class="menu-box yellow" style="display: flex; flex-direction: column;">
+            <div class="menu-header">
+                <div class="icon">💵</div>
+                <div class="title">PENJUALAN</div>
+                <div class="subtitle">Piutang</div>
+            </div>
+            <a href="{{ route('sales.receivable.create') }}" class="arrow-button-box green">➤</a>
+        </div>
+
+        <!-- Hutang -->
+        <div class="menu-box green" style="display: flex; flex-direction: column;">
+            <div class="menu-header">
+                <div class="icon">🛍️</div>
+                <div class="title">Pembayaran Piutang</div>
+                <div class="subtitle">Cash/Transfer</div>
+            </div>
+            <a href="{{ route('receivable-payments.cash.create') }}" class="arrow-button-box green">➤</a>
+        </div>
+
+        <div class="menu-box green" style="display: flex; flex-direction: column;">
+            <div class="menu-header">
+                <div class="icon">📅</div>
+                <div class="title">LAPORAN</div>
+                <div class="subtitle">Penjualan</div>
+            </div>
+            <a href="{{ route('report.sales') }}" class="arrow-button-box green">➤</a>
+        </div>
+
+        <div class="menu-box yellow" style="display: flex; flex-direction: column;">
+            <div class="menu-header">
+                <div class="icon">📅</div>
+                <div class="title">LAPORAN</div>
+                <div class="subtitle">Pembayaran Piutang</div>
+            </div>
+            <a href="{{ route('report.receivable-payments') }}" class="arrow-button-box green">➤</a>
+        </div>
+
+    </div>
+</section>
+
     @endif
     
     <!-- ========== section end ========== -->
